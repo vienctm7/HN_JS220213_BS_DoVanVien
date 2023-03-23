@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=nhâp, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>viết chương trình đảo ngược chuỗi a thành chuỗi dao nguoc a1</h3>
+    <script>
+        let a="program";
+        let b=a.split("");
+        console.log(b);
+        let first=0;
+        let last = b.length-1;
+        while (first<last) {
+            let c = b[first];
+            b[first]=b[last];
+            b[last]=c;
+            first++;
+            last--
+        }
+        console.log(b);
+        let a1=b.join();
+        console.log(a1);
+    </script>
+</body>
+</html>

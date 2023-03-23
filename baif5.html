@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h2>QUAN LI NHAN VIEN</h2>
+    <label>Ten nhan vien</label><br>
+    <input type="text" id="name" placeholder="ten sinh vien"><br>
+    <label for="">nhap tuoi</label><br>
+    <input type="number" id="age" placeholder="nhap so tuoi"><br>
+    <label for=""></label><br>
+    <label for="">Ma nhan vien</label><br>
+    <input type="text" id="msv" placeholder="nhap ma sinh vien"><br>
+    <label for="">Que quan</label><br>
+    <input type="text" id="address" placeholder="nhap que quan"><br>
+    <label for="">gioi tinh</label><br>
+    <input type="text" id="sex" placeholder="nhap gioi tinh"><br>
+    <button onclick="staffInfo()"> Lưu </button>
+    <table id="table" border="1px">
+        <tr>
+            <td>ten nhan vien</td>
+            <td>tuoi</td>
+            <td>ma nhan vien</td>
+            <td>que quan</td>
+            <td>gioi tinh</td>
+            <td><button onclick="changeListStaff">edit</button></td>
+            <td><button onclick="deleteListStaff">Delete</button></td>
+        </tr>
+    </table><br>
+    <script>
+        let listStaff = [];
+        function staffInfo() {
+            let name = document.getElementById("name").value;
+            let age = document.getElementById("age").value;
+            let msv = document.getElementById("msv").value;
+            let address = document.getElementById("address").value;
+            let sex = document.getElementById("sex").value;
+            let saveInfo = {
+                ten: name,
+                tuoi: age,
+                msv: msv,
+                diachi: address,
+                gioitinh: sex,
+            }
+            listStaff.push(saveInfo);
+
+            rederStaff();
+        }
+        function rederStaff() {
+
+            let result =
+                `
+            <tr>
+        <td>ten nhan vien</td>
+        <td>tuoi</td>
+        <td>ma nhan vien</td>
+        <td>que quan</td>
+        <td>gioi tinh</td>
+        <td>edit</td>
+        <td>Delete</td>
+            </tr>
+            `
+            for (let i = 0; i < listStaff.length; i++) {
+                result +=
+                    `
+                <tr>
+        <td>${listStaff[i].ten}</td>
+        <td>${listStaff[i].tuoi}</td>
+        <td>${listStaff[i].msv}</td>
+        <td>${listStaff[i].diachi}</td>
+        <td>${listStaff[i].gioitinh}</td>
+        <td><button onclick="changelistStaff(${i})">edit</button></td>
+        <td><button onclick="DeletelistStaff(${i})">delete</button></td>
+            </tr>
+                
+                `
+            }
+            document.getElementById("table").innerHTML = result;
+        }
+        function DeletelistStaff(id) {
+            listStaff.splice(id, 1);
+            rederStaff();
+        }
+
+        let editNumberID;
+        function changelistStaff(id) {
+            document.getElementById("name").value = listStaff[id].ten;
+            document.getElementById("age").value = listStaff[id].tuoi;
+            document.getElementById("msv").value = listStaff[id].msv;
+            document.getElementById("address").value = listStaff[id].diachi;
+            document.getElementById("sex").value = listStaff[id].gioitinh;
+            editNumberID = id;
+        }
+        function updateInfo2(id) {
+            id = editNumberID;
+            listStaff[id].ten = document.getElementById("name").value;
+            listStaff[id].tuoi = document.getElementById("age").value;
+            listStaff[id].msv = document.getElementById("msv").value ;
+            listStaff[id].diachi = document.getElementById("address").value;
+            listStaff[id].gioitinh = document.getElementById("sex").value;
+            rederStudent();
+        }
+
+
+
+    </script>
+
+</body>
+
+</html>

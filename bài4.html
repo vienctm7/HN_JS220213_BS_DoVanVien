@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>chuong trinh sap xep phan tu so trong mang theo thu tu tang dan</h3>
+    <script>
+        let array=[5,3,1,4,2];
+        for (let i = 0; i < array.length - 1; i++) {
+    for (let j = i + 1; j < array.length; j++) {
+        if (array[j] < array[i]) {
+        let t = array[i];
+        array[i] = array[j];
+        array[j] = t;
+        }
+    }
+    }
+    console.log(array);
+    </script>
+</body>
+</html>
